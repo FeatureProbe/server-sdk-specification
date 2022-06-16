@@ -107,7 +107,8 @@
           "name": "test bool_detail",
           "user": {
             "key": "user id",
-            "customValues": []
+            "customValues": [
+            ]
           },
           "function": {
             "name": "bool_detail",
@@ -125,7 +126,8 @@
           "name": "test number_detail",
           "user": {
             "key": "user id",
-            "customValues": []
+            "customValues": [
+            ]
           },
           "function": {
             "name": "number_detail",
@@ -143,7 +145,8 @@
           "name": "test json_detail",
           "user": {
             "key": "user id",
-            "customValues": []
+            "customValues": [
+            ]
           },
           "function": {
             "name": "json_detail",
@@ -161,7 +164,8 @@
           "name": "test string_detail",
           "user": {
             "key": "user id",
-            "customValues": []
+            "customValues": [
+            ]
           },
           "function": {
             "name": "string_detail",
@@ -289,7 +293,8 @@
           "name": "test string_detail",
           "user": {
             "key": "user id",
-            "customValues": []
+            "customValues": [
+            ]
           },
           "function": {
             "name": "string_detail",
@@ -344,7 +349,8 @@
                 "salt": "salt"
               }
             },
-            "rules": [],
+            "rules": [
+            ],
             "variations": [
               "1",
               "2",
@@ -384,7 +390,8 @@
                 "salt": "salt"
               }
             },
-            "rules": [],
+            "rules": [
+            ],
             "variations": [
               "1",
               "2",
@@ -418,7 +425,8 @@
           "name": "test bucket by a none exist attribute.",
           "user": {
             "key": "user id",
-            "customValues": []
+            "customValues": [
+            ]
           },
           "function": {
             "name": "string_detail",
@@ -433,7 +441,8 @@
           "name": "test bucket by key in exact bucket",
           "user": {
             "key": "key",
-            "customValues": []
+            "customValues": [
+            ]
           },
           "function": {
             "name": "string_detail",
