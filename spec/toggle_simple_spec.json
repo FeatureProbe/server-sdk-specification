@@ -107,8 +107,7 @@
           "name": "test bool_detail",
           "user": {
             "key": "user id",
-            "customValues": [
-            ]
+            "customValues": []
           },
           "function": {
             "name": "bool_detail",
@@ -126,8 +125,7 @@
           "name": "test number_detail",
           "user": {
             "key": "user id",
-            "customValues": [
-            ]
+            "customValues": []
           },
           "function": {
             "name": "number_detail",
@@ -145,8 +143,7 @@
           "name": "test json_detail",
           "user": {
             "key": "user id",
-            "customValues": [
-            ]
+            "customValues": []
           },
           "function": {
             "name": "json_detail",
@@ -164,8 +161,7 @@
           "name": "test string_detail",
           "user": {
             "key": "user id",
-            "customValues": [
-            ]
+            "customValues": []
           },
           "function": {
             "name": "string_detail",
@@ -293,8 +289,7 @@
           "name": "test string_detail",
           "user": {
             "key": "user id",
-            "customValues": [
-            ]
+            "customValues": []
           },
           "function": {
             "name": "string_detail",
@@ -349,8 +344,7 @@
                 "salt": "salt"
               }
             },
-            "rules": [
-            ],
+            "rules": [],
             "variations": [
               "1",
               "2",
@@ -390,8 +384,7 @@
                 "salt": "salt"
               }
             },
-            "rules": [
-            ],
+            "rules": [],
             "variations": [
               "1",
               "2",
@@ -425,8 +418,7 @@
           "name": "test bucket by a none exist attribute.",
           "user": {
             "key": "user id",
-            "customValues": [
-            ]
+            "customValues": []
           },
           "function": {
             "name": "string_detail",
@@ -441,8 +433,7 @@
           "name": "test bucket by key in exact bucket",
           "user": {
             "key": "key",
-            "customValues": [
-            ]
+            "customValues": []
           },
           "function": {
             "name": "string_detail",
@@ -1030,6 +1021,196 @@
           "expectResult": {
             "value": true,
             "reason": "type mismatch"
+          }
+        }
+      ]
+    },
+    {
+      "scenario": "Get segment toggle scenarios",
+      "fixture": {
+        "segments": {
+          "My_First_Project-snapshot_users": {
+            "uniqueId": "My_First_Project-snapshot_users",
+            "version": 1,
+            "rules": [
+              {
+                "conditions": [
+                  {
+                    "type": "string",
+                    "subject": "userId",
+                    "predicate": "is one of",
+                    "objects": [
+                      "1",
+                      "2",
+                      "3",
+                      "4"
+                    ]
+                  },
+                  {
+                    "type": "string",
+                    "subject": "userId",
+                    "predicate": "is not any of",
+                    "objects": [
+                      "2",
+                      "3",
+                      "4"
+                    ]
+                  }
+                ]
+              },
+              {
+                "conditions": [
+                  {
+                    "type": "string",
+                    "subject": "userId",
+                    "predicate": "is one of",
+                    "objects": [
+                      "5"
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          "My_First_Project-test_users": {
+            "uniqueId": "My_First_Project-test_users",
+            "version": 1,
+            "rules": [
+              {
+                "conditions": [
+                  {
+                    "type": "string",
+                    "subject": "name",
+                    "predicate": "is one of",
+                    "objects": [
+                      "xiaomi",
+                      "huawei",
+                      "meizu",
+                      "apple"
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "toggles": {
+          "segment_toggle": {
+            "key": "segment_toggle",
+            "enabled": true,
+            "forClient": true,
+            "version": 1,
+            "disabledServe": {
+              "select": 1
+            },
+            "defaultServe": {
+              "select": 3
+            },
+            "rules": [
+              {
+                "serve": {
+                  "select": 0
+                },
+                "conditions": [
+                  {
+                    "type": "segment",
+                    "predicate": "is in",
+                    "objects": [
+                      "My_First_Project-snapshot_users",
+                      "My_First_Project-test_users"
+                    ]
+                  }
+                ]
+              },
+              {
+                "serve": {
+                  "select": 2
+                },
+                "conditions": [
+                  {
+                    "type": "segment",
+                    "predicate": "is not in",
+                    "objects": [
+                      "My_First_Project-snapshot_users"
+                    ]
+                  }
+                ]
+              }
+            ],
+            "variations": [
+              "1",
+              "2",
+              "3",
+              "4"
+            ]
+          }
+        }
+      },
+      "cases": [
+        {
+          "name": "test segment match 0 rule",
+          "user": {
+            "key": "user id",
+            "customValues": [
+              {
+                "key": "userId",
+                "value": "1"
+              }
+            ]
+          },
+          "function": {
+            "name": "string_detail",
+            "toggle": "segment_toggle",
+            "default": "0"
+          },
+          "expectResult": {
+            "value": "1",
+            "rule_index": 0,
+            "reason": "rule 0"
+          }
+        },
+        {
+          "name": "test multiple segment match 0 rule",
+          "user": {
+            "key": "user id",
+            "customValues": [
+              {
+                "key": "name",
+                "value": "xiaomi"
+              }
+            ]
+          },
+          "function": {
+            "name": "string_detail",
+            "toggle": "segment_toggle",
+            "default": "0"
+          },
+          "expectResult": {
+            "value": "1",
+            "rule_index": 0,
+            "reason": "rule 0"
+          }
+        },
+        {
+          "name": "test not in segment rule",
+          "user": {
+            "key": "user id",
+            "customValues": [
+              {
+                "key": "userId",
+                "value": "7"
+              }
+            ]
+          },
+          "function": {
+            "name": "string_detail",
+            "toggle": "segment_toggle",
+            "default": "0"
+          },
+          "expectResult": {
+            "value": "3",
+            "rule_index": 1,
+            "reason": "rule 1"
           }
         }
       ]
