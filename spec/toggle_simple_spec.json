@@ -24,7 +24,7 @@
           },
           "function": {
             "name": "bool_value",
-            "toggle": "none_exit_toggle",
+            "toggle": "none_exist_toggle",
             "default": true
           },
           "expectResult": {
@@ -48,7 +48,7 @@
           },
           "function": {
             "name": "string_value",
-            "toggle": "none_exit_toggle",
+            "toggle": "none_exist_toggle",
             "default": ""
           },
           "expectResult": {
@@ -72,7 +72,7 @@
           },
           "function": {
             "name": "number_value",
-            "toggle": "none_exit_toggle",
+            "toggle": "none_exist_toggle",
             "default": 0
           },
           "expectResult": {
@@ -96,7 +96,7 @@
           },
           "function": {
             "name": "json_value",
-            "toggle": "none_exit_toggle",
+            "toggle": "none_exist_toggle",
             "default": {}
           },
           "expectResult": {
@@ -112,14 +112,13 @@
           },
           "function": {
             "name": "bool_detail",
-            "toggle": "none_exit_toggle",
+            "toggle": "none_exist_toggle",
             "default": false
           },
           "expectResult": {
             "value": false,
             "reason": "not exist",
-            "ruleIndex": 0,
-            "conditionIndex": 0
+            "noRuleIndex": true
           }
         },
         {
@@ -131,14 +130,13 @@
           },
           "function": {
             "name": "number_detail",
-            "toggle": "none_exit_toggle",
+            "toggle": "none_exist_toggle",
             "default": 0
           },
           "expectResult": {
             "value": 0,
             "reason": "not exist",
-            "ruleIndex": 0,
-            "conditionIndex": 0
+            "noRuleIndex": true
           }
         },
         {
@@ -150,14 +148,13 @@
           },
           "function": {
             "name": "json_detail",
-            "toggle": "none_exit_toggle",
+            "toggle": "none_exist_toggle",
             "default": {}
           },
           "expectResult": {
             "value": {},
             "reason": "not exist",
-            "ruleIndex": 0,
-            "conditionIndex": 0
+            "noRuleIndex": true
           }
         },
         {
@@ -169,14 +166,13 @@
           },
           "function": {
             "name": "string_detail",
-            "toggle": "none_exit_toggle",
+            "toggle": "none_exist_toggle",
             "default": ""
           },
           "expectResult": {
             "value": "",
             "reason": "not exist",
-            "ruleIndex": 0,
-            "conditionIndex": 0
+            "noRuleIndex": true
           }
         }
       ]
@@ -304,7 +300,7 @@
           "expectResult": {
             "value": "5",
             "reason": "disabled",
-            "no_rule_index": true,
+            "noRuleIndex": true,
             "version": 11
           }
         }
@@ -936,7 +932,7 @@
           },
           "expectResult": {
             "value": "3",
-            "rule_index": 2
+            "ruleIndex": 2
           }
         },
         {
@@ -961,7 +957,7 @@
           },
           "expectResult": {
             "value": "1",
-            "rule_index": 0
+            "ruleIndex": 0
           }
         },
         {
@@ -982,7 +978,7 @@
           },
           "expectResult": {
             "value": "4",
-            "no_rule_index": true
+            "noRuleIndex": true
           }
         },
         {
@@ -1003,7 +999,7 @@
           },
           "expectResult": {
             "value": "4",
-            "no_rule_index": true,
+            "noRuleIndex": true,
             "reason": "default"
           }
         },
