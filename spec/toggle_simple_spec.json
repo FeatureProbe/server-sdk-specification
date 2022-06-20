@@ -1221,6 +1221,27 @@
             "rule_index": 1,
             "reason": "rule 1"
           }
+        },
+        {
+          "name": "test segment not exist rule",
+          "user": {
+            "key": "user id",
+            "customValues": [
+              {
+                "key": "userId",
+                "value": "7"
+              }
+            ]
+          },
+          "function": {
+            "name": "string_detail",
+            "toggle": "segment_none_toggle",
+            "default": "0"
+          },
+          "expectResult": {
+            "value": "0",
+            "rule_index": null
+          }
         }
       ]
     }
