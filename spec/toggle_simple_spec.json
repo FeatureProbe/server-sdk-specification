@@ -1038,8 +1038,8 @@
       "scenario": "Get segment toggle scenarios",
       "fixture": {
         "segments": {
-          "My_First_Project-snapshot_users": {
-            "uniqueId": "My_First_Project-snapshot_users",
+          "My_First_Project$snapshot_users": {
+            "uniqueId": "My_First_Project$snapshot_users",
             "version": 1,
             "rules": [
               {
@@ -1081,8 +1081,8 @@
               }
             ]
           },
-          "My_First_Project-test_users": {
-            "uniqueId": "My_First_Project-test_users",
+          "My_First_Project$test_users": {
+            "uniqueId": "My_First_Project$test_users",
             "version": 1,
             "rules": [
               {
@@ -1125,8 +1125,8 @@
                     "type": "segment",
                     "predicate": "is in",
                     "objects": [
-                      "My_First_Project-snapshot_users",
-                      "My_First_Project-test_users"
+                      "My_First_Project$snapshot_users",
+                      "My_First_Project$test_users"
                     ]
                   }
                 ]
@@ -1140,7 +1140,7 @@
                     "type": "segment",
                     "predicate": "is not in",
                     "objects": [
-                      "My_First_Project-snapshot_users"
+                      "My_First_Project$snapshot_users"
                     ]
                   }
                 ]
@@ -1174,7 +1174,7 @@
                     "type": "segment",
                     "predicate": "is in",
                     "objects": [
-                      "My_First_Project-snapshot_none"
+                      "My_First_Project$snapshot_none"
                     ]
                   }
                 ]
