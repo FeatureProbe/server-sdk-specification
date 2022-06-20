@@ -1152,6 +1152,40 @@
               "3",
               "4"
             ]
+          },
+          "segment_none_toggle": {
+            "key": "segment_none_toggle",
+            "enabled": true,
+            "forClient": true,
+            "version": 1,
+            "disabledServe": {
+              "select": 1
+            },
+            "defaultServe": {
+              "select": 3
+            },
+            "rules": [
+              {
+                "serve": {
+                  "select": 0
+                },
+                "conditions": [
+                  {
+                    "type": "segment",
+                    "predicate": "is in",
+                    "objects": [
+                      "My_First_Project-snapshot_none"
+                    ]
+                  }
+                ]
+              }
+            ],
+            "variations": [
+              "1",
+              "2",
+              "3",
+              "4"
+            ]
           }
         }
       },
