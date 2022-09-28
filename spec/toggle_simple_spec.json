@@ -393,6 +393,40 @@
               "2",
               "3"
             ]
+          },
+          "tutorial_rollout": {
+            "key": "tutorial_rollout",
+            "enabled": true,
+            "forClient": true,
+            "version": 11,
+            "disabledServe": {
+              "select": 0
+            },
+            "defaultServe": {
+              "split": {
+                "distribution": [
+                  [
+                    [
+                      0,
+                      9000
+                    ]
+                  ],
+                  [
+                    [
+                      9000,
+                      10000
+                    ]
+                  ]
+                ],
+                "salt": ""
+              }
+            },
+            "rules": [
+            ],
+            "variations": [
+              false,
+              true
+            ]
           }
         }
       },
@@ -447,6 +481,102 @@
           },
           "expectResult": {
             "value": "2"
+          }
+        },
+        {
+          "name": "test tutorial_rollout with user id 13 value is true",
+          "user": {
+            "key": "13",
+            "customValues": [
+            ]
+          },
+          "function": {
+            "name": "bool_value",
+            "toggle": "tutorial_rollout",
+            "default": false
+          },
+          "expectResult": {
+            "value": true
+          }
+        },
+        {
+          "name": "test tutorial_rollout with user id 15 value is true",
+          "user": {
+            "key": "15",
+            "customValues": [
+            ]
+          },
+          "function": {
+            "name": "bool_value",
+            "toggle": "tutorial_rollout",
+            "default": false
+          },
+          "expectResult": {
+            "value": true
+          }
+        },
+        {
+          "name": "test tutorial_rollout with user id 16 value is true",
+          "user": {
+            "key": "16",
+            "customValues": [
+            ]
+          },
+          "function": {
+            "name": "bool_value",
+            "toggle": "tutorial_rollout",
+            "default": false
+          },
+          "expectResult": {
+            "value": true
+          }
+        },
+        {
+          "name": "test tutorial_rollout with user id 13 detail is true",
+          "user": {
+            "key": "13",
+            "customValues": [
+            ]
+          },
+          "function": {
+            "name": "bool_detail",
+            "toggle": "tutorial_rollout",
+            "default": false
+          },
+          "expectResult": {
+            "value": true
+          }
+        },
+        {
+          "name": "test tutorial_rollout with user id 15 detail is true",
+          "user": {
+            "key": "15",
+            "customValues": [
+            ]
+          },
+          "function": {
+            "name": "bool_detail",
+            "toggle": "tutorial_rollout",
+            "default": false
+          },
+          "expectResult": {
+            "value": true
+          }
+        },
+        {
+          "name": "test tutorial_rollout with user id 16 detail is true",
+          "user": {
+            "key": "16",
+            "customValues": [
+            ]
+          },
+          "function": {
+            "name": "bool_detail",
+            "toggle": "tutorial_rollout",
+            "default": false
+          },
+          "expectResult": {
+            "value": true
           }
         }
       ]
