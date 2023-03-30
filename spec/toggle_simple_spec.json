@@ -107,8 +107,7 @@
           "name": "test bool_detail",
           "user": {
             "key": "user id",
-            "customValues": [
-            ]
+            "customValues": []
           },
           "function": {
             "name": "bool_detail",
@@ -125,8 +124,7 @@
           "name": "test number_detail",
           "user": {
             "key": "user id",
-            "customValues": [
-            ]
+            "customValues": []
           },
           "function": {
             "name": "number_detail",
@@ -143,8 +141,7 @@
           "name": "test json_detail",
           "user": {
             "key": "user id",
-            "customValues": [
-            ]
+            "customValues": []
           },
           "function": {
             "name": "json_detail",
@@ -161,8 +158,7 @@
           "name": "test string_detail",
           "user": {
             "key": "user id",
-            "customValues": [
-            ]
+            "customValues": []
           },
           "function": {
             "name": "string_detail",
@@ -289,8 +285,7 @@
           "name": "test string_detail",
           "user": {
             "key": "user id",
-            "customValues": [
-            ]
+            "customValues": []
           },
           "function": {
             "name": "string_detail",
@@ -345,8 +340,7 @@
                 "salt": "salt"
               }
             },
-            "rules": [
-            ],
+            "rules": [],
             "variations": [
               "1",
               "2",
@@ -386,8 +380,7 @@
                 "salt": "salt"
               }
             },
-            "rules": [
-            ],
+            "rules": [],
             "variations": [
               "1",
               "2",
@@ -421,8 +414,7 @@
           "name": "test bucket by a none exist attribute.",
           "user": {
             "key": "user id",
-            "customValues": [
-            ]
+            "customValues": []
           },
           "function": {
             "name": "string_detail",
@@ -437,8 +429,7 @@
           "name": "test bucket by key in exact bucket",
           "user": {
             "key": "key",
-            "customValues": [
-            ]
+            "customValues": []
           },
           "function": {
             "name": "string_detail",
@@ -1026,6 +1017,272 @@
           "expectResult": {
             "value": true,
             "reason": "type mismatch"
+          }
+        }
+      ]
+    },
+    {
+      "scenario": "Prerequisites scenarios",
+      "fixture": {
+        "segments": {},
+        "toggles": {
+          "number_toggle": {
+            "key": "number_toggle",
+            "enabled": true,
+            "forClient": true,
+            "version": 11,
+            "disabledServe": {
+              "select": 0
+            },
+            "defaultServe": {
+              "select": 1
+            },
+            "rules": [
+              {
+                "serve": {
+                  "select": 2
+                },
+                "conditions": [
+                  {
+                    "type": "string",
+                    "subject": "city",
+                    "predicate": "is one of",
+                    "objects": [
+                      "1",
+                      "2",
+                      "3"
+                    ]
+                  }
+                ]
+              }
+            ],
+            "variations": [
+              0,
+              1,
+              2
+            ]
+          },
+          "string_toggle": {
+            "key": "string_toggle",
+            "enabled": true,
+            "forClient": true,
+            "version": 11,
+            "disabledServe": {
+              "select": 0
+            },
+            "defaultServe": {
+              "select": 1
+            },
+            "rules": [
+              {
+                "serve": {
+                  "select": 2
+                },
+                "conditions": [
+                  {
+                    "type": "string",
+                    "subject": "city",
+                    "predicate": "is one of",
+                    "objects": [
+                      "1",
+                      "2",
+                      "3"
+                    ]
+                  }
+                ]
+              }
+            ],
+            "variations": [
+              "0",
+              "1",
+              "2",
+              "3"
+            ]
+          },
+          "prerequisite_toggle_match": {
+            "key": "prerequisite_toggle_match",
+            "enabled": true,
+            "forClient": false,
+            "version": 1,
+            "disabledServe": {
+              "select": 0
+            },
+            "defaultServe": {
+              "select": 1
+            },
+            "rules": [
+              {
+                "serve": {
+                  "select": 2
+                },
+                "conditions": [
+                  {
+                    "type": "string",
+                    "subject": "city",
+                    "predicate": "is one of",
+                    "objects": [
+                      "1"
+                    ]
+                  }
+                ]
+              }
+            ],
+            "prerequisites": [
+              {
+                "key": "string_toggle",
+                "value": "2"
+              },
+              {
+                "key": "number_toggle",
+                "value": 2
+              }
+            ],
+            "variations": [
+              "0",
+              "1",
+              "2"
+            ]
+          },
+          "prerequisite_toggle_not_match": {
+            "key": "prerequisite_toggle_not_match",
+            "enabled": true,
+            "forClient": false,
+            "version": 1,
+            "disabledServe": {
+              "select": 0
+            },
+            "defaultServe": {
+              "select": 1
+            },
+            "rules": [
+              {
+                "serve": {
+                  "select": 2
+                },
+                "conditions": [
+                  {
+                    "type": "string",
+                    "subject": "city",
+                    "predicate": "is one of",
+                    "objects": [
+                      "1"
+                    ]
+                  }
+                ]
+              }
+            ],
+            "prerequisites": [
+              {
+                "key": "number_toggle",
+                "value": 5
+              }
+            ],
+            "variations": [
+              "0",
+              "1",
+              "2"
+            ]
+          },
+          "prerequisite_toggle_not_exist": {
+            "key": "prerequisite_toggle_not_exist",
+            "enabled": true,
+            "forClient": false,
+            "version": 1,
+            "disabledServe": {
+              "select": 0
+            },
+            "defaultServe": {
+              "select": 1
+            },
+            "rules": [
+              {
+                "serve": {
+                  "select": 2
+                },
+                "conditions": [
+                  {
+                    "type": "string",
+                    "subject": "email",
+                    "predicate": "is one of",
+                    "objects": [
+                      "test@a.com"
+                    ]
+                  }
+                ]
+              }
+            ],
+            "prerequisites": [
+              {
+                "key": "not_exist_toggle",
+                "value": true
+              }
+            ],
+            "variations": [
+              "0",
+              "1",
+              "2"
+            ]
+          }
+        }
+      },
+      "cases": [
+        {
+          "name": "test prerequisites match.",
+          "user": {
+            "key": "user id",
+            "customValues": [
+              {
+                "key": "city",
+                "value": "1"
+              }
+            ]
+          },
+          "function": {
+            "name": "string_detail",
+            "toggle": "prerequisite_toggle_match",
+            "default": "5"
+          },
+          "expectResult": {
+            "value": "2"
+          }
+        },
+        {
+          "name": "test prerequisites not match",
+          "user": {
+            "key": "user id",
+            "customValues": [
+              {
+                "key": "city",
+                "value": "1"
+              }
+            ]
+          },
+          "function": {
+            "name": "string_detail",
+            "toggle": "prerequisite_toggle_not_match",
+            "default": "6"
+          },
+          "expectResult": {
+            "value": "1",
+            "reason": "default. prerequisite not match: number_toggle.",
+            "version": 1
+          }
+        },
+        {
+          "name": "test prerequisites not exist",
+          "user": {
+            "key": "user id",
+            "customValues": []
+          },
+          "function": {
+            "name": "string_detail",
+            "toggle": "prerequisite_toggle_not_exist",
+            "default": "6"
+          },
+          "expectResult": {
+            "value": "1",
+            "reason": "default. prerequisite not exist: not_exist_toggle.",
+            "version": 1
           }
         }
       ]
