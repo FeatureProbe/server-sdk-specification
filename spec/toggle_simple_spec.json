@@ -1396,6 +1396,65 @@
       },
       "cases": [
         {
+          "name": "test prerequisites match.",
+          "user": {
+            "key": "user id",
+            "customValues": [
+              {
+                "key": "city",
+                "value": "1"
+              }
+            ]
+          },
+          "function": {
+            "name": "string_detail",
+            "toggle": "prerequisite_toggle_match",
+            "default": "5"
+          },
+          "expectResult": {
+            "value": "2"
+          }
+        },
+        {
+          "name": "test prerequisites not match",
+          "user": {
+            "key": "user id",
+            "customValues": [
+              {
+                "key": "city",
+                "value": "1"
+              }
+            ]
+          },
+          "function": {
+            "name": "string_detail",
+            "toggle": "prerequisite_toggle_not_match",
+            "default": "6"
+          },
+          "expectResult": {
+            "value": "1",
+            "reason": "default. prerequisite not match: number_toggle.",
+            "version": 1
+          }
+        },
+        {
+          "name": "test prerequisites not exist",
+          "user": {
+            "key": "user id",
+            "customValues": []
+          },
+          "function": {
+            "name": "string_detail",
+            "toggle": "prerequisite_toggle_not_exist",
+            "default": "6"
+          },
+          "expectResult": {
+            "value": "1",
+            "reason": "default. prerequisite not exist: not_exist_toggle.",
+            "version": 1
+          }
+        },
+        {
           "name": "detail: test prerequisite dependency cycle.",
           "user": {
             "key": "user id",
@@ -1413,7 +1472,7 @@
           },
           "expectResult": {
             "value": false,
-            "reason": "prerequisites deep overflow"
+            "reason": "prerequisite deep overflow"
           }
         },
         {
@@ -1433,8 +1492,7 @@
             "default": false
           },
           "expectResult": {
-            "value": false,
-            "reason": "prerequisites deep overflow"
+            "value": false
           }
         }
       ]
