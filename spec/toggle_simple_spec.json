@@ -1352,67 +1352,87 @@
               "1",
               "2"
             ]
+          },
+          "prerequisite_toggle_dependency_cycle": {
+            "key": "prerequisite_toggle_dependency_cycle",
+            "enabled": true,
+            "forClient": false,
+            "version": 1,
+            "disabledServe": {
+              "select": 0
+            },
+            "defaultServe": {
+              "select": 0
+            },
+            "rules": [
+              {
+                "serve": {
+                  "select": 1
+                },
+                "conditions": [
+                  {
+                    "type": "string",
+                    "subject": "userId",
+                    "predicate": "is one of",
+                    "objects": [
+                      "123"
+                    ]
+                  }
+                ]
+              }
+            ],
+            "prerequisites": [
+              {
+                "key": "prerequisite_toggle_dependency_cycle",
+                "value": true
+              }
+            ],
+            "variations": [
+              false,
+              true
+            ]
           }
         }
       },
       "cases": [
         {
-          "name": "test prerequisites match.",
+          "name": "detail: test prerequisite dependency cycle.",
           "user": {
             "key": "user id",
             "customValues": [
               {
-                "key": "city",
-                "value": "1"
+                "key": "userId",
+                "value": "123"
               }
             ]
           },
           "function": {
-            "name": "string_detail",
-            "toggle": "prerequisite_toggle_match",
-            "default": "5"
+            "name": "bool_detail",
+            "toggle": "prerequisite_toggle_dependency_cycle",
+            "default": false
           },
           "expectResult": {
-            "value": "2"
+            "value": false
           }
         },
         {
-          "name": "test prerequisites not match",
+          "name": "bool: test prerequisite dependency cycle.",
           "user": {
             "key": "user id",
             "customValues": [
               {
-                "key": "city",
-                "value": "1"
+                "key": "userId",
+                "value": "123"
               }
             ]
           },
           "function": {
-            "name": "string_detail",
-            "toggle": "prerequisite_toggle_not_match",
-            "default": "6"
+            "name": "bool_value",
+            "toggle": "prerequisite_toggle_dependency_cycle",
+            "default": false
           },
           "expectResult": {
-            "value": "1",
-            "reason": "default. prerequisite not match: number_toggle.",
-            "version": 1
-          }
-        },
-        {
-          "name": "test prerequisites not exist",
-          "user": {
-            "key": "user id",
-            "customValues": []
-          },
-          "function": {
-            "name": "string_detail",
-            "toggle": "prerequisite_toggle_not_exist",
-            "default": "6"
-          },
-          "expectResult": {
-            "value": "1",
-            "reason": "default. prerequisite not exist: not_exist_toggle.",
-            "version": 1
+            "value": false
           }
         }
       ]
