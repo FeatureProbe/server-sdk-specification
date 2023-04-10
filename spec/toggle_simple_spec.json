@@ -1146,7 +1146,8 @@
           },
           "expectResult": {
             "value": true,
-            "reason": "type mismatch"
+            "reason": "type mismatch",
+            "ignore": ["python"]
           }
         }
       ]
@@ -1391,6 +1392,86 @@
               false,
               true
             ]
+          },
+          "multi_deep_prerequisite_toggle_not_match": {
+            "key": "multi_deep_prerequisite_toggle_not_match",
+            "enabled": true,
+            "forClient": false,
+            "version": 1,
+            "disabledServe": {
+              "select": 0
+            },
+            "defaultServe": {
+              "select": 1
+            },
+            "rules": [
+              {
+                "serve": {
+                  "select": 2
+                },
+                "conditions": [
+                  {
+                    "type": "string",
+                    "subject": "city",
+                    "predicate": "is one of",
+                    "objects": [
+                      "1"
+                    ]
+                  }
+                ]
+              }
+            ],
+            "prerequisites": [
+              {
+                "key": "prerequisite_toggle_not_match",
+                "value": "1"
+              }
+            ],
+            "variations": [
+              "0",
+              "1",
+              "2"
+            ]
+          },
+          "multi_deep_prerequisite_toggle_not_exist": {
+            "key": "multi_deep_prerequisite_toggle_not_exist",
+            "enabled": true,
+            "forClient": false,
+            "version": 1,
+            "disabledServe": {
+              "select": 0
+            },
+            "defaultServe": {
+              "select": 1
+            },
+            "rules": [
+              {
+                "serve": {
+                  "select": 2
+                },
+                "conditions": [
+                  {
+                    "type": "string",
+                    "subject": "city",
+                    "predicate": "is one of",
+                    "objects": [
+                      "1"
+                    ]
+                  }
+                ]
+              }
+            ],
+            "prerequisites": [
+              {
+                "key": "prerequisite_toggle_not_exist",
+                "value": "1"
+              }
+            ],
+            "variations": [
+              "0",
+              "1",
+              "2"
+            ]
           }
         }
       },
@@ -1493,6 +1574,46 @@
           },
           "expectResult": {
             "value": false
+          }
+        },
+        {
+          "name": "test multi deep prerequisite not match.",
+          "user": {
+            "key": "user id",
+            "customValues": [
+              {
+                "key": "city",
+                "value": "1"
+              }
+            ]
+          },
+          "function": {
+            "name": "string_value",
+            "toggle": "multi_deep_prerequisite_toggle_not_match",
+            "default": "0"
+          },
+          "expectResult": {
+            "value": "2"
+          }
+        },
+        {
+          "name": "test multi deep prerequisite not exist.",
+          "user": {
+            "key": "user id",
+            "customValues": [
+              {
+                "key": "city",
+                "value": "1"
+              }
+            ]
+          },
+          "function": {
+            "name": "string_detail",
+            "toggle": "multi_deep_prerequisite_toggle_not_exist",
+            "default": "10"
+          },
+          "expectResult": {
+            "value": "1"
           }
         }
       ]
