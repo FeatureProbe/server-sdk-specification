@@ -1514,7 +1514,7 @@
           },
           "expectResult": {
             "value": "1",
-            "reason": "default. prerequisite not match: number_toggle.",
+            "reason": "default.",
             "version": 1
           }
         },
