@@ -1027,6 +1027,41 @@
               "3",
               "4"
             ]
+          },
+          "string_toggle_attr_empty": {
+            "key": "string_toggle_attr_empty",
+            "enabled": true,
+            "forClient": true,
+            "version": 1,
+            "disabledServe": {
+              "select": 2
+            },
+            "defaultServe": {
+              "select": 3
+            },
+            "rules": [
+              {
+                "serve": {
+                  "select": 1
+                },
+                "conditions": [
+                  {
+                    "type": "string",
+                    "subject": "email",
+                    "predicate": "is not any of",
+                    "objects": [
+                      "test@a.com"
+                    ]
+                  }
+                ]
+              }
+            ],
+            "variations": [
+              "1",
+              "2",
+              "3",
+              "4"
+            ]
           }
         }
       },
@@ -1147,6 +1182,27 @@
           "expectResult": {
             "value": true,
             "reason": "type mismatch",
+            "ignore": ["python"]
+          }
+        },
+        {
+          "name": "test string match subject is empty get with bool_detail.",
+          "user": {
+            "key": "user id",
+            "customValues": [
+              {
+                "key": "email",
+                "value": ""
+              }
+            ]
+          },
+          "function": {
+            "name": "string_detail",
+            "toggle": "string_toggle_attr_empty",
+            "default": "9"
+          },
+          "expectResult": {
+            "value": "2",
             "ignore": ["python"]
           }
         }
