@@ -1569,8 +1569,8 @@
             "default": "6"
           },
           "expectResult": {
-            "value": "1",
-            "reason": "default.",
+            "value": "0",
+            "reason": "disabled.",
             "version": 1
           }
         },
@@ -1586,8 +1586,8 @@
             "default": "6"
           },
           "expectResult": {
-            "value": "1",
-            "reason": "default. prerequisite not exist: not_exist_toggle.",
+            "value": "0",
+            "reason": "prerequisite not exist",
             "version": 1
           }
         },
@@ -1646,10 +1646,10 @@
           "function": {
             "name": "string_value",
             "toggle": "multi_deep_prerequisite_toggle_not_match",
-            "default": "0"
+            "default": "6"
           },
           "expectResult": {
-            "value": "2"
+            "value": "0"
           }
         },
         {
@@ -1669,7 +1669,7 @@
             "default": "10"
           },
           "expectResult": {
-            "value": "1"
+            "value": "0"
           }
         }
       ]
