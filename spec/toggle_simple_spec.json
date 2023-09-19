@@ -1609,7 +1609,7 @@
           },
           "expectResult": {
             "value": false,
-            "reason": "prerequisite deep overflow"
+            "reason": "prerequisite depth overflow"
           }
         },
         {
